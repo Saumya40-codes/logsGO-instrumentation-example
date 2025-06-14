@@ -20,12 +20,9 @@ var messages = []string{
 var levels = []string{"info", "warn", "error"}
 var services = []string{"ap-south1", "us-west1"}
 
-// Timestamps for:
-// - 1 Jan 2025 00:00:32 UTC
-// - 30 May 2025 00:00:32 UTC
 var fixedTimestamps = []int64{
-	1746307232, // 1 Jan 2025
-	1748553632, // 30 May 2025
+	1746307232, // goes to s3 (if configured)
+	1748553632, // goes to local storage
 }
 
 func uploadLogWithDelay(lc *logclient.Client, opts *logclient.Opts) {
@@ -44,7 +41,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// First, upload logs with fixed timestamps
 	for i, ts := range fixedTimestamps {
 		opts := &logclient.Opts{
 			Level:     levels[i%len(levels)],
@@ -55,8 +51,7 @@ func main() {
 		uploadLogWithDelay(lc, opts)
 	}
 
-	// Then, upload logs with time.Now()
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 3; i++ { // goes in mem
 		for i := 0; i < 3; i++ {
 			opts := &logclient.Opts{
 				Level:     levels[i%len(levels)],
