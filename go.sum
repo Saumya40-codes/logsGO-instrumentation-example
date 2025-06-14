@@ -2,6 +2,8 @@ github.com/Saumya40-codes/LogsGO v0.0.0-20250602133302-c802fee4975b h1:lM5xtZOsC
 github.com/Saumya40-codes/LogsGO v0.0.0-20250602133302-c802fee4975b/go.mod h1:7DkJPg8yWqPA/Sir050wKYlVdkc8z51eRvFVTGQcNnE=
 github.com/Saumya40-codes/LogsGO v0.0.0-20250614055419-f1a081a11641 h1:VQE9unem3GoNdlu408pQPaetnCv20XdFYn/PPJrfUFU=
 github.com/Saumya40-codes/LogsGO v0.0.0-20250614055419-f1a081a11641/go.mod h1:ZS1Ks0DokZm1iQejMnHifAPgwxeeF7kO/b7O/pd1ri8=
+github.com/Saumya40-codes/LogsGO v0.0.0-20250614131724-fa9d4805c432 h1:67jZckPJXtW9mXRAXgICN5886h8T4S/URFW8pWER0Ys=
+github.com/Saumya40-codes/LogsGO v0.0.0-20250614131724-fa9d4805c432/go.mod h1:ZS1Ks0DokZm1iQejMnHifAPgwxeeF7kO/b7O/pd1ri8=
 github.com/bytedance/sonic v1.13.2 h1:8/H1FempDZqC4VqjptGo14QQlJx8VdZJegxs6wwfqpQ=
 github.com/bytedance/sonic v1.13.2/go.mod h1:o68xyaF9u2gvVBuGHPlUVCy+ZfmNNO5ETf1+KgkJhz4=
 github.com/bytedance/sonic/loader v0.2.4 h1:ZWCw4stuXUsn1/+zQDqeE7JKP+QO47tz7QCNan80NzY=

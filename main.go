@@ -36,7 +36,7 @@ func uploadLogWithDelay(lc *logclient.Client, opts *logclient.Opts) {
 
 func main() {
 	ctx := context.Background()
-	lc, err := logclient.NewLogClient(ctx)
+	lc, err := logclient.NewLogClient(ctx, ":50051")
 	if err != nil {
 		log.Fatal(err)
 	}

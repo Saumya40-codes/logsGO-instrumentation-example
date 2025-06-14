@@ -2,7 +2,7 @@ module logsGo-instument
 
 go 1.24.1
 
-require github.com/Saumya40-codes/LogsGO v0.0.0-20250614055419-f1a081a11641
+require github.com/Saumya40-codes/LogsGO v0.0.0-20250614131724-fa9d4805c432
 
 require (
 	golang.org/x/net v0.40.0 // indirect
