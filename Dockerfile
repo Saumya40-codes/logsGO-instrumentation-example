@@ -8,4 +8,4 @@ RUN go build -o main .
 FROM alpine:3.22 AS final
 WORKDIR /app
 COPY --from=builder /app/main .
-CMD ["./main"]
+ENTRYPOINT ["./main"]
