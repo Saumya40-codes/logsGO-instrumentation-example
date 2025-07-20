@@ -6,7 +6,6 @@ import (
 	"log"
 	"time"
 
-	logapi "github.com/Saumya40-codes/LogsGO/api/grpc/pb"
 	"github.com/Saumya40-codes/LogsGO/client/go/logclient"
 )
 
@@ -35,7 +34,7 @@ func init() {
 	flag.Parse()
 }
 
-func uploadLogWithDelay(ctx context.Context, lc *logclient.Client, opts *logapi.LogEntry) {
+func uploadLogWithDelay(ctx context.Context, lc *logclient.Client, opts *logclient.LogOpts) {
 	err := lc.UploadLog(ctx, opts)
 	if err != nil {
 		log.Println("log upload failed")
@@ -44,8 +43,8 @@ func uploadLogWithDelay(ctx context.Context, lc *logclient.Client, opts *logapi.
 	time.Sleep(20 * time.Second)
 }
 
-func uploadBatchToQueue(ctx context.Context, lc *logclient.Client, entries []*logapi.LogEntry) {
-	batch := &logapi.LogBatch{
+func uploadBatchToQueue(ctx context.Context, lc *logclient.Client, entries []*logclient.LogOpts) {
+	batch := &logclient.LogBatch{
 		Entries: entries,
 	}
 	err := lc.UploadLogsToQueue(ctx, batch)
@@ -76,11 +75,11 @@ func main() {
 	}
 
 	if enableQueue {
-		var batch []*logapi.LogEntry
+		var batch []*logclient.LogOpts
 
 		// Add fixed timestamp logs
 		for i, ts := range fixedTimestamps {
-			batch = append(batch, &logapi.LogEntry{
+			batch = append(batch, &logclient.LogOpts{
 				Level:     levels[i%len(levels)],
 				Service:   services[i%len(services)],
 				Message:   messages[i%len(messages)],
@@ -91,14 +90,14 @@ func main() {
 		// Add generated logs
 		for i := 0; i < 3; i++ {
 			for j := 0; j < 3; j++ {
-				batch = append(batch, &logapi.LogEntry{
+				batch = append(batch, &logclient.LogOpts{
 					Level:     levels[j%len(levels)],
 					Service:   services[j%len(services)],
 					Message:   messages[j%len(messages)],
 					Timestamp: time.Now().Unix(),
 				})
 
-				batch = append(batch, &logapi.LogEntry{
+				batch = append(batch, &logclient.LogOpts{
 					Level:     levels[(j+1)%len(levels)],
 					Service:   services[(j+1)%len(services)],
 					Message:   messages[(j+3)%len(messages)],
@@ -111,7 +110,7 @@ func main() {
 	} else {
 		// No queue, use gRPC upload
 		for i, ts := range fixedTimestamps {
-			opts := &logapi.LogEntry{
+			opts := &logclient.LogOpts{
 				Level:     levels[i%len(levels)],
 				Service:   services[i%len(services)],
 				Message:   messages[i%len(messages)],
@@ -122,7 +121,7 @@ func main() {
 
 		for i := 0; i < 3; i++ {
 			for j := 0; j < 3; j++ {
-				opts := &logapi.LogEntry{
+				opts := &logclient.LogOpts{
 					Level:     levels[j%len(levels)],
 					Service:   services[j%len(services)],
 					Message:   messages[j%len(messages)],
@@ -130,7 +129,7 @@ func main() {
 				}
 				uploadLogWithDelay(ctx, lc, opts)
 
-				opts = &logapi.LogEntry{
+				opts = &logclient.LogOpts{
 					Level:     levels[(j+1)%len(levels)],
 					Service:   services[(j+1)%len(services)],
 					Message:   messages[(j+3)%len(messages)],

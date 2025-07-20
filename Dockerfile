@@ -9,3 +9,5 @@ FROM alpine:3.22 AS final
 WORKDIR /app
 COPY --from=builder /app/main .
 ENTRYPOINT ["./main"]
+
+LABEL rebuilt="true"

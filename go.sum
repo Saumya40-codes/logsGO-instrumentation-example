@@ -1,5 +1,5 @@
-github.com/Saumya40-codes/LogsGO v0.0.0-20250708140822-f374da409aed h1:eJrAQI4w2S2T9QWSIbqyHP7H5GVez7EEgHacV39FNtM=
-github.com/Saumya40-codes/LogsGO v0.0.0-20250708140822-f374da409aed/go.mod h1:Mg3nn+o2XSCf3g0rJvYgG7adJWBwrNsKcbVkTXY2wco=
+github.com/Saumya40-codes/LogsGO v0.1.1 h1:m4Nm4SbDwiysc6Y/obc2bfsIhbu6vvgkjr5CWcg23lk=
+github.com/Saumya40-codes/LogsGO v0.1.1/go.mod h1:Mg3nn+o2XSCf3g0rJvYgG7adJWBwrNsKcbVkTXY2wco=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/bytedance/sonic v1.13.2 h1:8/H1FempDZqC4VqjptGo14QQlJx8VdZJegxs6wwfqpQ=
